@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 	"time"
-
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )

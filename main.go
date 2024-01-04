@@ -39,10 +39,16 @@ func main() {
 	})
 
 	//account related endpoints
-	r.POST("/register", accountRegisterHandler)
-	r.POST("/login", accountLoginHandler)
+	r.POST("/user/register", accountRegisterHandler)
+	r.POST("/user/login", accountLoginHandler)
 	r.GET("/user/:id", accountGetUserHandler)
-	
+
+	//album related endpoints
+	r.POST("/album/add", albumAddHandler)
+	r.GET("/album", albumGetAllHandler)
+	r.GET("/album/:id", albumGetHandler)
+	r.PATCH("/album/update/:id", albumUpdateHandler)
+
 	r.Run() // listen and serve on 0.0.0.0:8080
 }
 

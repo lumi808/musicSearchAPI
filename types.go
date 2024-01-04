@@ -31,3 +31,32 @@ type Review struct {
 	Rating  int    `json:"rating,omitempty" bson:"rating,omitempty"`
 	Opinion string `json:"opinion,omitempty" bson:"opinion,omitempty"`
 }
+
+type Track struct {
+	Title string  `json:"title,omitempty" bson:"title,omitempty"`
+	Length string `json:"length,omitempty" bson:"length,omitempty"`
+}
+
+type Album struct {
+	ID primitive.ObjectID           `json:"_id,omitempty" bson:"_id,omitempty"`
+	Title string 		            `json:"title,omitempty" bson:"title,omitempty"`
+	Artists []string                `json:"artists,omitempty" bson:"artists,omitempty"`
+	DateReleased primitive.DateTime `json:"date_released,omitempty" bson:"date_released,omitempty"`
+	Description string              `json:"description,omitempty" bson:"description,omitempty"`
+	Cover string                    `json:"cover,omitempty" bson:"cover,omitempty"`
+	Tracklist []Track               `json:"tracklist,omitempty" bson:"tracklist,omitempty"`
+	Reviews []Review                `json:"reviews,omitempty" bson:"reviews,omitempty"`
+	AverageRating float64 			`json:"average_rating,omitempty" bson:"average_rating,omitempty"`
+}
+
+type AlbumPayload struct {
+	ID primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Title string          `json:"title,omitempty" bson:"title,omitempty"`
+	Artists []string      `json:"artists,omitempty" bson:"artists,omitempty"`
+	DateReleased string   `json:"date_released,omitempty" bson:"date_released,omitempty"`
+	Description string    `json:"description,omitempty" bson:"description,omitempty"`
+	Cover string          `json:"cover,omitempty" bson:"cover,omitempty"`
+	Tracklist []Track     `json:"tracklist,omitempty" bson:"tracklist,omitempty"`
+	Reviews []Review      `json:"reviews,omitempty" bson:"reviews,omitempty"`
+	AverageRating float64 `json:"average_rating,omitempty" bson:"average_rating,omitempty"`
+}
