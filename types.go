@@ -28,7 +28,14 @@ type LoginPayload struct {
 }
 
 type Review struct {
-	Rating  int    `json:"rating,omitempty" bson:"rating,omitempty"`
+	AuthorID primitive.ObjectID `json:"author_id,omitempty" bson:"author_id,omitempty"`
+	Rating  float64    `json:"rating,omitempty" bson:"rating,omitempty"`
+	Opinion string `json:"opinion,omitempty" bson:"opinion,omitempty"`
+}
+
+type ReviewPayload struct {
+	AlbumID primitive.ObjectID `json:"album_id,omitempty" bson:"album_id,omitempty"`
+	Rating  float64    `json:"rating,omitempty" bson:"rating,omitempty"`
 	Opinion string `json:"opinion,omitempty" bson:"opinion,omitempty"`
 }
 
@@ -46,7 +53,7 @@ type Album struct {
 	Cover string                    `json:"cover,omitempty" bson:"cover,omitempty"`
 	Tracklist []Track               `json:"tracklist,omitempty" bson:"tracklist,omitempty"`
 	Reviews []Review                `json:"reviews,omitempty" bson:"reviews,omitempty"`
-	AverageRating float64 			`json:"average_rating,omitempty" bson:"average_rating,omitempty"`
+	AverageRating float64 			`json:"rating,omitempty" bson:"rating,omitempty"`
 }
 
 type AlbumPayload struct {

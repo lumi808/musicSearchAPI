@@ -49,6 +49,7 @@ func main() {
 	r.GET("/album/:id", albumGetHandler)
 	r.PATCH("/album/update/:id", albumUpdateHandler)
 
+	r.Use(authenticateJWT())
 	//review related endpoints
 	r.POST("/review/add", reviewAddHandler)
 	r.PATCH("/review/edit", reviewUpdateHandler)
