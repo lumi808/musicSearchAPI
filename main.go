@@ -49,6 +49,11 @@ func main() {
 	r.GET("/album/:id", albumGetHandler)
 	r.PATCH("/album/update/:id", albumUpdateHandler)
 
+	//review related endpoints
+	r.POST("/review/add", reviewAddHandler)
+	r.PATCH("/review/edit", reviewUpdateHandler)
+	r.DELETE("/review/delete", reviewDeleteHandler)
+
 	r.Run() // listen and serve on 0.0.0.0:8080
 }
 

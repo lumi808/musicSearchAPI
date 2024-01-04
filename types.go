@@ -60,3 +60,9 @@ type AlbumPayload struct {
 	Reviews []Review      `json:"reviews,omitempty" bson:"reviews,omitempty"`
 	AverageRating float64 `json:"average_rating,omitempty" bson:"average_rating,omitempty"`
 }
+
+type Session struct {
+	ID primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	UserID primitive.ObjectID `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	AccessToken string `json:"access_token,omitempty" bson:"access_token,omitempty"`
+}

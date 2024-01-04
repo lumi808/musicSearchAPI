@@ -105,6 +105,28 @@ func accountLoginHandler(c *gin.Context){
 		return
 	}
 
+	var result bson.M
+	err = mongoClient.Database("music_search").Collection("sessions").FindOne(context.TODO(), bson.D{{"user_id", user.ID},}).Decode(&result)
+	if err == nil {
+		_, err = mongoClient.Database("music_search").Collection("sessions").DeleteOne(context.TODO(), bson.D{{"user_id", user.ID},})
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete session"})
+			return
+		}
+	}
+
+	session := Session{
+		UserID: user.ID,
+		AccessToken: token,
+	}
+
+	_, err = mongoClient.Database("music_search").Collection("sessions").InsertOne(context.TODO(), session)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to insert session"})
+		return
+	}
+
 	c.JSON(http.StatusOK, gin.H{"message": "Login successful", "token": token})
 }
 
