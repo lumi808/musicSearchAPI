@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -41,8 +40,8 @@ func reviewAddHandler(c *gin.Context) {
 		Opinion: payload.Opinion,
 	}
 
-	// Check if album exists
-	// Check if user has already reviewed this album
+	// TODO: Check if album exists
+	// TODO: Check if user has already reviewed this album
 
 	updateAlbum := bson.D{{"$push", bson.D{{"reviews", review}}}}
 
@@ -109,12 +108,4 @@ func reviewAddHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": "Review added successfully"})
-}
-
-func reviewUpdateHandler(c *gin.Context) {
-	
-}
-
-func reviewDeleteHandler(c *gin.Context) {
-	
 }
